@@ -18,28 +18,26 @@ int main()
     cout << "dx = "; cin >> dx;
 
     cout << fixed;
-    cout << "---------------------------------" << endl;
+    cout << "------------------------" << endl;
     cout << "|" << setw(7) << "x" << " |"
         << setw(12) << "y" << " |" << endl;
-    cout << "---------------------------------" << endl;
+    cout << "------------------------" << endl;
 
     x = xp;
     while (x <= xk)
     {
         if (x <= -8 - R)
             y = R;
-        else if (x > -8 - R && x <= -8)
-            y = R - sqrt(R * R - (x + 8) * (x + 8));
-        else if (x > -8 && x <= -8 + R)
-            y = sqrt(R * R - (x + 8) * (x + 8));
+
+        else if (x > -8 - R && x <= -8 + R)
+            y = R - sqrt(R * R - x * x - 16 * x - 64);
+
         else if (x > -8 + R && x <= -4)
             y = R;
-        else if (x > -4 && x <= 0)
-            y = -(R / 4.0) * x;
-        else if (x > 0 && x <= 2)
-            y = -0.5 * x;
-        else if (x > 2 && x <= 3)
-            y = x - 3;
+
+        else if (x > -4 && x <= 2)
+            y = ((-1 - R) * x) / 6.0 + (R - 2) / 3.0;
+
         else
             y = x - 3;
 
@@ -50,6 +48,6 @@ int main()
         x += dx;
     }
 
-    cout << "---------------------------------" << endl;
+    cout << "------------------------" << endl;
     return 0;
 }
